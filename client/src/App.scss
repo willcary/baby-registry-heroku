@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+$info: #ccf8f3;
+
+// ------------ General ------------
+.App {
+  margin: 0 auto 1rem auto;
+}
+
+.max-width-container {
+  max-width: 1300px;
+}
+
+.hover-grow {
+  transition: transform 150ms ease-in-out;
+}
+
+.hover-grow:hover {
+  transform: scale(1.1);
+}
+
+// ------------ Navbar ------------
+.nav-button {
+  color: $info;
+  padding: 0.5em 1em;
+  border-radius: 0.25rem;
+  font-size: 1.125rem;
+  width: max-content;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 50px;
+}
+
+.home-img {
+  width: 100%;
+  max-width: 500px;
+}
+
+@media (min-width: 540px) {
+  .nav-button:hover {
+    color: #ccf8f3;
+    outline: 1px solid $info;
+    text-decoration: none;
+  }
+}
+
+// Registry Card Styles
+.card-title {
+  text-transform: capitalize;
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.give-input {
+  max-width: 3rem;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.name-input {
+  max-width: 10rem;
+  display: inline;
+}
+
+.registry-item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.bg-opacity-lighter {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.bg-opacity-darker {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 450px) {
+  .registry-item-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  .give-input {
+    margin-bottom: 0;
+  }
+}

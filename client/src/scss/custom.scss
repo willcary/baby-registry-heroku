@@ -1,0 +1,26 @@
+// custom variables
+$primary: #0f6c70;
+$secondary: #af2768;
+$info: #ccf8f3;
+$warning: #fc9811;
+$success: #ea348b;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1300px,
+) !default;
+
+// import bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+// $primary: $blue !default;
+// $secondary: $gray-600 !default;
+// $success: $green !default;
+// $info: #29d7df;
+// $warning: $yellow !default;
+// $danger: $red !default;
+// $light: $gray-100 !default;
+// $dark: $gray-900 !default;
