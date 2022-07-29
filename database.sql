@@ -1,4 +1,4 @@
-CREATE DATABASE registry;
+-- CREATE DATABASE registry;
 
 CREATE TABLE items(
     item_id SERIAL PRIMARY KEY,
