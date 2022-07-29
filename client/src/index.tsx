@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import './scss/custom.min.css'
 import App from './App'
-import configJson from './auth0_config.json'
 // import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
@@ -13,8 +12,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0Provider
-        domain={configJson.domain}
-        clientId={configJson.clientId}
+        domain={process.env.REACT_APP_AUTH0_DOMAIN}
+        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
         redirectUri={window.location.origin}
       >
         <App />
