@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # variables
-auth0_config.json
+# auth0_config.json
