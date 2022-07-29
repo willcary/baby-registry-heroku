@@ -2,17 +2,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-export default function EditModal({
-  show,
-  onHide,
-  registryItems,
-  handleAddItem,
-}) {
-  const determineItemId = () =>
-    registryItems.length > 0
-      ? (Number(registryItems[registryItems.length - 1].item_id) + 1).toString()
-      : 0
-
+export default function EditModal({ show, onHide, handleAddItem }) {
   const resetItem = {
     user_id: 0,
     item_name: '',

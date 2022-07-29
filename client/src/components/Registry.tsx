@@ -25,7 +25,7 @@ export default function Registry() {
   // Retrieving data from server on initial load
   const getItems = async () => {
     try {
-      const response = await fetch('http://localhost:5000/items')
+      const response = await fetch('/items')
       const jsonData = await response.json()
       setRegistryItems(jsonData)
     } catch (error: any) {
@@ -76,7 +76,7 @@ export default function Registry() {
     changedItems.forEach(async (item: any) => {
       try {
         const response = await fetch(
-          `http://localhost:5000/items/${item.item_id}`,
+          `/items/${item.item_id}`,
           {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,7 @@ export default function Registry() {
     event.preventDefault()
 
     try {
-      const deleteItem = await fetch(`http://localhost:5000/items/${item_id}`, {
+      const deleteItem = await fetch(`/items/${item_id}`, {
         method: 'DELETE',
       })
       setRegistryItems((prevItems) => {
@@ -120,7 +120,7 @@ export default function Registry() {
     event.preventDefault()
     try {
       const response = await fetch(
-        `http://localhost:5000/items/${item.item_id}`,
+        `/items/${item.item_id}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -145,7 +145,7 @@ export default function Registry() {
     })
     try {
       const body = item
-      const response = await fetch('http://localhost:5000/items', {
+      const response = await fetch('/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -210,7 +210,6 @@ export default function Registry() {
       <AddItemModal
         show={showAddItemModal}
         onHide={() => setShowAddItemModal(false)}
-        registryItems={registryItems}
         handleAddItem={handleAddItem}
       />
       <section>
