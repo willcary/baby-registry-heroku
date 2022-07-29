@@ -12,8 +12,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0Provider
-        domain={process.env.REACT_APP_AUTH0_DOMAIN}
-        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+        // OR operator defaults to empty string if falsy
+        domain={process.env.REACT_APP_AUTH0_DOMAIN || ''}
+        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID || ''}
         redirectUri={window.location.origin}
       >
         <App />
