@@ -75,14 +75,11 @@ export default function Registry() {
     })
     changedItems.forEach(async (item: any) => {
       try {
-        const response = await fetch(
-          `/items/${item.item_id}`,
-          {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(item),
-          }
-        )
+        const response = await fetch(`/items/${item.item_id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item),
+        })
         window.location.href = '/'
       } catch (error: any) {
         console.error(error.message)
@@ -119,14 +116,11 @@ export default function Registry() {
   ) => {
     event.preventDefault()
     try {
-      const response = await fetch(
-        `/items/${item.item_id}`,
-        {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item),
-        }
-      )
+      const response = await fetch(`/items/${item.item_id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(item),
+      })
       window.location.href = '/'
     } catch (error: any) {
       console.error(error.message)
@@ -195,6 +189,13 @@ export default function Registry() {
         maternaty/post-partum clothes etc. We prefer relatively gender neutral
         colors/a mix of colors for the more expensive reusable items so that
         they will be a good fit for our next lil' one.
+      </p>
+      <p className='text-start ms-3 ms-md-5 me-3 me-md-5'>
+        Send items to: 714 Garrett Drive, Columbus, OH 43214{' '}
+        <em>
+          (Please don't send anything until after August 11th. We won't be
+          living in this address until then!)
+        </em>
       </p>
       {isAuthenticated && checkEmail() && (
         <button
