@@ -213,39 +213,15 @@ export default function Registry() {
         onHide={() => setShowAddItemModal(false)}
         handleAddItem={handleAddItem}
       />
-      <section>
+      <section className='mb-5'>
         <h2 className='mt-4 text-primary'>Priority</h2>
-        {isAuthenticated && checkEmail() ? (
-          itemFilterMapGrid(true, true)
-        ) : (
-          <GuestFormContainer
-            registryItems={registryItems}
-            showConfirmationModal={showConfirmationModal}
-            setShowConfirmationModal={setShowConfirmationModal}
-            handleSubmit={handleSubmit}
-            priority={true}
-          >
-            {itemFilterMapGrid(true, true)}
-          </GuestFormContainer>
-        )}
+        {itemFilterMapGrid(true, true)}
       </section>
-      <section>
+      <section className='mb-5'>
         <h2 className='mt-4 text-secondary'>Nice to Have</h2>
-        {isAuthenticated && checkEmail() ? (
-          itemFilterMapGrid(true, false)
-        ) : (
-          <GuestFormContainer
-            registryItems={registryItems}
-            showConfirmationModal={showConfirmationModal}
-            setShowConfirmationModal={setShowConfirmationModal}
-            handleSubmit={handleSubmit}
-            priority={false}
-          >
-            {itemFilterMapGrid(true, false)}
-          </GuestFormContainer>
-        )}
+        {itemFilterMapGrid(true, false)}
       </section>
-      <section>
+      <section className='mb-5'>
         <h2 className='mt-4 text-dark'>Already Gifted</h2>
         <div className='registry-item-grid border rounded-1 p-3'>
           {registryItems

@@ -67,7 +67,7 @@ export default function RegistryItem({
               isGiftNeeded ? 'bg-opacity-lighter' : 'bg-opacity-darker'
             }`}
           >
-            {description}
+            {description ? description : 'unavailable'}
           </span>
         </Card.Text>
         <Card.Text>
@@ -114,18 +114,30 @@ export default function RegistryItem({
         </Card.Text>
         <Card.Text>
           Suggested product:{' '}
-          <a
-            href={suggested_example}
-            target='_blank'
-            rel='noreferrer'
-            className={`ps-2 pe-2 pt-1 pb-1 rounded-1 ${
-              isGiftNeeded
-                ? 'text-light bg-opacity-lighter'
-                : 'text-dark bg-opacity-darker'
-            }`}
-          >
-            Follow Link
-          </a>
+          {suggested_example ? (
+            <a
+              href={suggested_example}
+              target='_blank'
+              rel='noreferrer'
+              className={`ps-2 pe-2 pt-1 pb-1 rounded-1 ${
+                isGiftNeeded
+                  ? 'text-light bg-opacity-lighter'
+                  : 'text-dark bg-opacity-darker'
+              }`}
+            >
+              Follow Link
+            </a>
+          ) : (
+            <span
+              className={`ps-2 pe-2 pt-1 pb-1 rounded-1 ${
+                isGiftNeeded
+                  ? 'text-light bg-opacity-lighter'
+                  : 'text-dark bg-opacity-darker'
+              }`}
+            >
+              none
+            </span>
+          )}
         </Card.Text>
       </Card.Body>
       <Card.Footer>

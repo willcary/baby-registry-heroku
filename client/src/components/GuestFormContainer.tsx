@@ -12,7 +12,7 @@ function GuestFormContainer(props: any) {
   } = props
   return (
     <form>
-      <div>
+      <div className='mb-5'>
         {/* Using react composition to leverage conditional guest form */}
         {children}
         <Button
