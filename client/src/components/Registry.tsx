@@ -3,7 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import RegistryItem from './RegistryItem'
 import Container from 'react-bootstrap/Container'
-import GuestFormContainer from './GuestFormContainer'
+import Button from 'react-bootstrap/Button'
+import ConfirmationModal from './modals/ConfirmationModal'
 import AddItemModal from './modals/AddItemModal'
 
 import '../App.min.css'
@@ -213,33 +214,52 @@ export default function Registry() {
         onHide={() => setShowAddItemModal(false)}
         handleAddItem={handleAddItem}
       />
-      <section className='mb-5'>
-        <h2 className='mt-4 text-primary'>Priority</h2>
-        {itemFilterMapGrid(true, true)}
-      </section>
-      <section className='mb-5'>
-        <h2 className='mt-4 text-secondary'>Nice to Have</h2>
-        {itemFilterMapGrid(true, false)}
-      </section>
-      <section className='mb-5'>
-        <h2 className='mt-4 text-dark'>Already Gifted</h2>
-        <div className='registry-item-grid border rounded-1 p-3'>
-          {registryItems
-            .filter((item) => item.gifted >= item.requested)
-            .map((item) => {
-              return (
-                <RegistryItem
-                  key={item.item_id}
-                  item={item}
-                  isGiftNeeded={false}
-                  handleChange={handleChange}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEdit}
-                />
-              )
-            })}
-        </div>
-      </section>
+      <form>
+        <Button
+          onClick={() => setShowConfirmationModal(true)}
+          variant='outline-primary'
+          size='lg'
+          className='mt-3 me-4 mb-4 w-50 box-shadow position-fixed bottom-0 end-0 z-index-'
+        >
+          Reserve gifts
+        </Button>
+        <ConfirmationModal
+          show={showConfirmationModal}
+          onHide={() => setShowConfirmationModal(false)}
+          items={[
+            ...registryItems.filter((item: any) => Number(item.give) > 0),
+          ]}
+          handleSubmit={handleSubmit}
+        />
+
+        <section className='mb-5'>
+          <h2 className='mt-4 text-primary'>Priority</h2>
+          {itemFilterMapGrid(true, true)}
+        </section>
+        <section className='mb-5'>
+          <h2 className='mt-4 text-secondary'>Nice to Have</h2>
+          {itemFilterMapGrid(true, false)}
+        </section>
+        <section className='mb-5'>
+          <h2 className='mt-4 text-dark'>Already Gifted</h2>
+          <div className='registry-item-grid border rounded-1 p-3'>
+            {registryItems
+              .filter((item) => item.gifted >= item.requested)
+              .map((item) => {
+                return (
+                  <RegistryItem
+                    key={item.item_id}
+                    item={item}
+                    isGiftNeeded={false}
+                    handleChange={handleChange}
+                    handleDelete={handleDelete}
+                    handleEdit={handleEdit}
+                  />
+                )
+              })}
+          </div>
+        </section>
+      </form>
     </Container>
   )
 }
