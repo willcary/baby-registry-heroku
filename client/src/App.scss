@@ -21,14 +21,6 @@ $info: #ccf8f3;
   transform: scale(1.1);
 }
 
-.box-shadow {
-  box-shadow: rgba(15, 108, 112, 0.4) 3px 3px, rgba(15, 108, 112, 0.3) 6px 6px,
-    rgba(15, 108, 112, 0.2) 9px 9px, rgba(15, 108, 112, 0.1) 12px 12px,
-    rgba(15, 108, 112, 0.05) 15px 15px;
-  z-index: 100;
-  background: #fff;
-}
-
 // ------------ Navbar ------------
 .nav-button {
   color: $info;
@@ -104,4 +96,22 @@ $info: #ccf8f3;
   .give-input {
     margin-bottom: 0;
   }
+}
+
+.reserve-btn-container {
+  background: rgba(209, 209, 209, 0.477);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.reserve-btn {
+  margin: 0.5em auto 0.75em;
+  width: 86%;
+  box-shadow: rgba(175, 39, 104, 0.5) 3px 3px, rgba(15, 108, 112, 0.4) 6px 6px,
+    rgba(175, 39, 104, 0.3) 9px 9px, rgba(15, 108, 112, 0.2) 12px 12px,
+    rgba(175, 39, 104, 0.1) 15px 15px;
+  background-color: #fff;
 }

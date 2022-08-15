@@ -215,14 +215,16 @@ export default function Registry() {
         handleAddItem={handleAddItem}
       />
       <form>
-        <Button
-          onClick={() => setShowConfirmationModal(true)}
-          variant='outline-primary'
-          size='lg'
-          className='mt-3 me-4 mb-4 w-50 box-shadow position-fixed bottom-0 end-0 z-index-'
-        >
-          Reserve gifts
-        </Button>
+        <div className='reserve-btn-container'>
+          <Button
+            onClick={() => setShowConfirmationModal(true)}
+            variant='outline-primary'
+            size='lg'
+            className='reserve-btn'
+          >
+            Reserve gifts
+          </Button>
+        </div>
         <ConfirmationModal
           show={showConfirmationModal}
           onHide={() => setShowConfirmationModal(false)}
