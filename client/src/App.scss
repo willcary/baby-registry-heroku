@@ -88,6 +88,10 @@ $info: #ccf8f3;
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.last-section {
+  margin-bottom: 5em;
+}
+
 @media (min-width: 450px) {
   .registry-item-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -98,6 +102,7 @@ $info: #ccf8f3;
   }
 }
 
+//Fixed Position Reserve Button
 .reserve-btn-container {
   background: rgba(209, 209, 209, 0.477);
   position: fixed;

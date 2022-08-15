@@ -242,7 +242,7 @@ export default function Registry() {
           <h2 className='mt-4 text-secondary'>Nice to Have</h2>
           {itemFilterMapGrid(true, false)}
         </section>
-        <section className='mb-5'>
+        <section className='last-section'>
           <h2 className='mt-4 text-dark'>Already Gifted</h2>
           <div className='registry-item-grid border rounded-1 p-3'>
             {registryItems
