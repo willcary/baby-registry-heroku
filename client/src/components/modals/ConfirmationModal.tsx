@@ -30,10 +30,12 @@ export default function ConfirmationModal({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>
-          Remember you need to actually ship these items to Emily and Will or
-          give them in person at the baby shower!
-        </p>
+        {items.length ? (
+          <p>
+            Remember you need to actually ship these items to Emily and Will or
+            give them in person at the baby shower!
+          </p>
+        ) : null}
         {items.length ? (
           <Table striped bordered>
             <thead>
