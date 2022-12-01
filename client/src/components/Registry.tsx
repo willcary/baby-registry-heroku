@@ -185,14 +185,14 @@ export default function Registry() {
         registry app to encourage buying/regifting/thrifting used items whenever
         possible. Please claim an item if you plan to purchase it by entering
         the quantity and your name at the bottom of the item and click the
-        "Reserve gift" button after each category. In addition to this list, we
-        also welcome any used items that you are ready to pass on,
+        "Reserve gift" button at the bottom of the screen. In addition to this
+        list, we also welcome any used items that you are ready to pass on,
         maternaty/post-partum clothes etc. We prefer relatively gender neutral
         colors/a mix of colors for the more expensive reusable items so that
         they will be a good fit for our next lil' one.
       </p>
       <p className='text-start ms-3 ms-md-5 me-3 me-md-5'>
-        Send items to: 714 Garrett Drive, Columbus, OH 43214{' '}
+        Send items to: ----------{' '}
         <em>
           (Please don't send anything until after August 11th. We won't be
           living in this address until then!)
@@ -218,7 +218,7 @@ export default function Registry() {
         <div className='reserve-btn-container'>
           <Button
             onClick={() => setShowConfirmationModal(true)}
-            variant='outline-primary'
+            variant='primary'
             size='lg'
             className='reserve-btn'
           >
