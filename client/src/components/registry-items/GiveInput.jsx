@@ -1,4 +1,4 @@
-import '../App.min.css'
+import '../../App.min.css'
 
 export default function GiveInput({
   item_id,

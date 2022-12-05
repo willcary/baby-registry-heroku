@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa'
-import DeleteModal from './modals/DeleteModal'
-import EditModal from './modals/EditModal.jsx'
-import '../App.min.css'
-import { EditItemInterface } from '../assets/ts/types'
+import DeleteModal from '../modals/DeleteModal'
+import EditModal from '../modals/EditModal.jsx'
+import '../../App.min.css'
+import { EditItemInterface } from '../../assets/ts/types'
 
 export default function EditItem({
   item,

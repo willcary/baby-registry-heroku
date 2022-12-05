@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import RegistryItem from './RegistryItem'
+import RegistryItem from './registry-items/RegistryItem'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import ConfirmationModal from './modals/ConfirmationModal'

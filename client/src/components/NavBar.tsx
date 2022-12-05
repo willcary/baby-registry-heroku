@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import logo from '../assets/img/logo512-transparent.png'
 import { useAuth0 } from '@auth0/auth0-react'
-import LoginButton from '../components/LoginButton'
-import LogoutButton from '../components/LogoutButton'
+import LoginButton from './login-logout-btns/LoginButton'
+import LogoutButton from './login-logout-btns/LogoutButton'
 
 function NavBar() {
   const { isAuthenticated } = useAuth0()
