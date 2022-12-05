@@ -54,7 +54,7 @@ export default function EditModal({ show, onHide, handleAddItem }) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>Edit Item</Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>Add Item</Modal.Title>
       </Modal.Header>
       <form
         onSubmit={(event) => {

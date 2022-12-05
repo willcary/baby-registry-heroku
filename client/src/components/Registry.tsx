@@ -9,8 +9,8 @@ import AddItemModal from './modals/AddItemModal'
 
 import '../App.min.css'
 import { RegistryItems } from '../assets/ts/types.js'
-import { loginEmail1, loginEmail2 } from '../assets/js/constants.js'
 import { FaPlus } from 'react-icons/fa'
+import { checkIfAuth } from '../assets/js/functions'
 
 export default function Registry() {
   const { user, isAuthenticated } = useAuth0()
@@ -18,10 +18,6 @@ export default function Registry() {
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const [showAddItemModal, setShowAddItemModal] = useState(false)
-
-  //Check is user is registry creator
-  const checkEmail = () =>
-    user?.email === loginEmail1 || user?.email === loginEmail2
 
   // Retrieving data from server on initial load
   const getItems = async () => {
@@ -198,7 +194,7 @@ export default function Registry() {
           living in this address until then!)
         </em>
       </p>
-      {isAuthenticated && checkEmail() && (
+      {checkIfAuth(user, isAuthenticated) && (
         <button
           onClick={() => {
             setShowAddItemModal(true)
@@ -215,14 +211,18 @@ export default function Registry() {
         handleAddItem={handleAddItem}
       />
       <form>
-        <div className='reserve-btn-container'>
+        <div className='fixed-btn-container'>
           <Button
-            onClick={() => setShowConfirmationModal(true)}
+            onClick={() =>
+              checkIfAuth(user, isAuthenticated)
+                ? setShowAddItemModal(true)
+                : setShowConfirmationModal(true)
+            }
             variant='primary'
             size='lg'
-            className='reserve-btn'
+            className='fixed-btn'
           >
-            Reserve gifts
+            {checkIfAuth(user, isAuthenticated) ? 'Add Item' : 'Reserve gifts'}
           </Button>
         </div>
         <ConfirmationModal

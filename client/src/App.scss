@@ -107,7 +107,7 @@ $info: #ccf8f3;
 }
 
 //Fixed Position Reserve Button
-.reserve-btn-container {
+.fixed-btn-container {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(4px);
   position: fixed;
@@ -117,7 +117,7 @@ $info: #ccf8f3;
   z-index: 100;
 }
 
-.reserve-btn {
+.fixed-btn {
   margin: 0.5em auto 0.75em;
   width: 86%;
   padding: 0.75rem 1rem;

@@ -6,7 +6,7 @@ import NameInput from './NameInput'
 import '../App.min.css'
 
 import { Item } from '../assets/ts/types.js'
-import { loginEmail1, loginEmail2 } from '../assets/js/constants'
+import { checkIfAuth } from '../assets/js/functions'
 
 export default function RegistryItem({
   item,
@@ -16,9 +16,6 @@ export default function RegistryItem({
   handleEdit,
 }: Item) {
   const { user, isAuthenticated } = useAuth0()
-  //Check is user is registry creator
-  const checkEmail = () =>
-    user?.email === loginEmail1 || user?.email === loginEmail2
 
   const {
     item_id,
@@ -67,7 +64,7 @@ export default function RegistryItem({
               isGiftNeeded ? 'bg-opacity-lighter' : 'bg-opacity-darker'
             }`}
           >
-            {description ? description : 'unavailable'}
+            {description ? description : 'No description provided'}
           </span>
         </Card.Text>
         <Card.Text>
@@ -90,7 +87,7 @@ export default function RegistryItem({
             {gifted}
           </span>
         </Card.Text>
-        {isAuthenticated && checkEmail() && giver_name && (
+        {checkIfAuth(user, isAuthenticated) && giver_name && (
           <Card.Text>
             Gifted by:{' '}
             <span
@@ -141,7 +138,7 @@ export default function RegistryItem({
         </Card.Text>
       </Card.Body>
       <Card.Footer>
-        {isAuthenticated && checkEmail() ? (
+        {checkIfAuth(user, isAuthenticated) ? (
           <EditItem
             item={item}
             isGiftNeeded={isGiftNeeded}
