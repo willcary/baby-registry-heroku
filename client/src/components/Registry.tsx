@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import IntroText from './intro-text/IntroText'
 import RegistryItem from './registry-items/RegistryItem'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -175,41 +176,7 @@ export default function Registry() {
   return (
     <Container>
       <h1 className='mb-3 mt-4'>Emily and Will's Registry</h1>
-      <p className='text-start ms-3 ms-md-5 me-3 me-md-5'>
-        Welcome to our registry for our{' '}
-        <span className='text-secondary fw-bold'>baby girl!</span> We made this
-        registry app to encourage buying/regifting/thrifting used items whenever
-        possible. Please claim an item if you plan to purchase it by entering
-        the quantity and your name at the bottom of the item and click the
-        "Reserve gift" button at the bottom of the screen. In addition to this
-        list, we also welcome any used items that you are ready to pass on,
-        maternaty/post-partum clothes etc. We prefer relatively gender neutral
-        colors/a mix of colors for the more expensive reusable items so that
-        they will be a good fit for our next lil' one.
-      </p>
-      <p className='text-start ms-3 ms-md-5 me-3 me-md-5'>
-        Send items to: ----------{' '}
-        <em>
-          (Please don't send anything until after August 11th. We won't be
-          living in this address until then!)
-        </em>
-      </p>
-      {checkIfAuth(user, isAuthenticated) && (
-        <button
-          onClick={() => {
-            setShowAddItemModal(true)
-          }}
-          type='button'
-          className='btn btn-primary btn-lg hover-grow ms-auto me-auto d-flex flex-row justify-content-center align-items-center'
-        >
-          <FaPlus /> <span className='ms-2'>Add Item</span>
-        </button>
-      )}
-      <AddItemModal
-        show={showAddItemModal}
-        onHide={() => setShowAddItemModal(false)}
-        handleAddItem={handleAddItem}
-      />
+      <IntroText />
       <form>
         <div className='fixed-btn-container'>
           <Button
@@ -220,11 +187,22 @@ export default function Registry() {
             }
             variant='primary'
             size='lg'
-            className='fixed-btn'
+            className='fixed-btn d-flex align-items-center justify-content-center'
           >
-            {checkIfAuth(user, isAuthenticated) ? 'Add Item' : 'Reserve gifts'}
+            {checkIfAuth(user, isAuthenticated) ? (
+              <>
+                <FaPlus /> Add Item
+              </>
+            ) : (
+              'Reserve gifts'
+            )}
           </Button>
         </div>
+        <AddItemModal
+          show={showAddItemModal}
+          onHide={() => setShowAddItemModal(false)}
+          handleAddItem={handleAddItem}
+        />
         <ConfirmationModal
           show={showConfirmationModal}
           onHide={() => setShowConfirmationModal(false)}

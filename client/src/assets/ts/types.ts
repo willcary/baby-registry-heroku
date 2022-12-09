@@ -52,3 +52,10 @@ export interface EditItemInterface {
 //   maxGift: number
 //   handleChange: React.ChangeEventHandler<HTMLInputElement>
 // }
+
+export interface IntroInfo {
+  babyGender: string
+  setBabyGender?: any
+  address: string
+  setAddress?: any
+}
