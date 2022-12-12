@@ -1,17 +1,18 @@
-import { IntroInfo } from '../../assets/ts/types'
+import { UserInfo } from '../../assets/ts/types'
 
-export default function IntroLoggedOut({ babyGender, address }: IntroInfo) {
-  const determineGenderColor = (babyGender: string) =>
-    babyGender === 'girl'
+export default function IntroLoggedOut({ userInfo }: UserInfo) {
+  const { baby_gender, address } = userInfo
+  const determineGenderColor = (baby_gender: string) =>
+    baby_gender === 'girl'
       ? 'text-secondary'
-      : babyGender === 'boy'
+      : baby_gender === 'boy'
       ? 'text-primary'
       : ''
   return (
     <>
       <p className='text-start ms-3 ms-md-5 me-3 me-md-5'>
         Welcome to our registry for our{' '}
-        <span className={`${determineGenderColor(babyGender)} fw-bold`}>
+        <span className={`${determineGenderColor(baby_gender)} fw-bold`}>
           baby girl!
         </span>{' '}
         We are using this registry app to encourage buying/regifting/thrifting

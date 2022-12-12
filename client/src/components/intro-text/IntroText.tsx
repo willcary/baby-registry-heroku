@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { checkIfAuth } from '../../assets/js/functions'
 import '../../App.min.css'
@@ -7,17 +7,29 @@ import IntroLoggedIn from './IntroLoggedIn'
 
 export default function IntroText() {
   const { user, isAuthenticated } = useAuth0()
-  const [babyGender, setBabyGender] = useState('girl')
-  const [address, setAddress] = useState('')
+  const [userInfo, setUserInfo] = useState({
+    user_id: 0,
+    is_initiated: false,
+    baby_gender: 'mystery',
+    address: '',
+  })
+
+  const getUserInfo = async () => {
+    try {
+      const response = await fetch('/user_info')
+      const jsonData = await response.json()
+      setUserInfo(jsonData)
+    } catch (error: any) {
+      console.error(error.message)
+    }
+  }
+  useEffect(() => {
+    getUserInfo()
+  }, [])
 
   return checkIfAuth(user, isAuthenticated) ? (
-    <IntroLoggedIn
-      babyGender={babyGender}
-      setBabyGender={setBabyGender}
-      address={address}
-      setAddress={setAddress}
-    />
+    <IntroLoggedIn userInfo={userInfo} setUserInfo={setUserInfo} />
   ) : (
-    <IntroLoggedOut babyGender={babyGender} address={address} />
+    <IntroLoggedOut userInfo={userInfo} />
   )
 }

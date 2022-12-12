@@ -53,9 +53,13 @@ export interface EditItemInterface {
 //   handleChange: React.ChangeEventHandler<HTMLInputElement>
 // }
 
-export interface IntroInfo {
-  babyGender: string
-  setBabyGender?: any
-  address: string
-  setAddress?: any
+//interface for user data
+export interface UserInfo {
+  userInfo: {
+    user_id: number
+    is_initiated: boolean
+    baby_gender: string
+    address: string
+  }
+  setUserInfo?: any
 }

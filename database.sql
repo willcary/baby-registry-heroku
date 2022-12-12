@@ -14,3 +14,9 @@ CREATE TABLE items(
     giver_name TEXT,
     img_url TEXT
 );
+
+CREATE TABLE user_info(
+    user_id INTEGER,
+    baby_gender TEXT,
+    address TEXT
+)

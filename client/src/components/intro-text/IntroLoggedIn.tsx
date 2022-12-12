@@ -1,11 +1,56 @@
-import { IntroInfo } from '../../assets/ts/types'
+import { UserInfo } from '../../assets/ts/types'
 
-export default function IntroLoggedIn({
-  babyGender,
-  setBabyGender,
-  address,
-  setAddress,
-}: IntroInfo) {
+export default function IntroLoggedIn({ userInfo, setUserInfo }: UserInfo) {
+  const { user_id, is_initiated, baby_gender, address } = userInfo
+
+  //================================== Handle EDIT function ==================================
+  const handleEditUserInfo = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    userInfo: UserInfo
+  ) => {
+    event.preventDefault()
+    try {
+      const response = await fetch(`/user_info/${user_id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(address),
+      })
+      window.location.href = '/'
+    } catch (error: any) {
+      console.error(error.message)
+    }
+  }
+
+  //================================== Handle ADDITEM function ==================================
+  const handleAddUserInfo = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    userInfo: UserInfo
+  ) => {
+    event.preventDefault()
+    try {
+      const body = userInfo
+      const response = await fetch('/user_info', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      window.location.href = '/'
+    } catch (error: any) {
+      console.error(error.message)
+    }
+  }
+
+  //================================== Handle userInfo CHANGE function ==================================
+  const handleUserInfoChange: any = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value
+    const name = event.target.name
+    setUserInfo((prev: UserInfo) => {
+      return { ...prev, [name]: value }
+    })
+  }
+
   return (
     <>
       <p>
@@ -16,7 +61,9 @@ export default function IntroLoggedIn({
         <p>Know the gender of your new little one?</p>
         <div className='w-50 m-auto mb-3'>
           <select
-            value={babyGender}
+            value={baby_gender}
+            name='babyGender'
+            onChange={(event) => handleUserInfoChange(event)}
             className='form-select'
             aria-label='Gender options'
           >
@@ -38,7 +85,7 @@ export default function IntroLoggedIn({
           className='form-control w-50 m-auto mb-3'
           placeholder='Address'
           value={address}
-          onChange={(event) => setAddress(event.target.value)}
+          onChange={(event) => handleUserInfoChange(event)}
           aria-label='Address'
           aria-describedby='Address to ship'
         />
