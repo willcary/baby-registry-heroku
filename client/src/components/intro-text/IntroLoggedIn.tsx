@@ -1,14 +1,19 @@
+import { IntroProps } from '../../assets/ts/types'
 import { UserInfo } from '../../assets/ts/types'
 
-export default function IntroLoggedIn({ userInfo, setUserInfo }: UserInfo) {
-  const { user_id, is_initiated, baby_gender, address } = userInfo
+export default function IntroLoggedIn({
+  userInfo,
+  setUserInfo,
+  didUserLoad,
+}: IntroProps) {
+  const { user_id, baby_gender, address } = userInfo
 
   //================================== Handle EDIT function ==================================
   const handleEditUserInfo = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.FormEvent,
     userInfo: UserInfo
   ) => {
-    event.preventDefault()
+    // event.preventDefault
     try {
       const response = await fetch(`/user_info/${user_id}`, {
         method: 'PUT',
@@ -23,10 +28,10 @@ export default function IntroLoggedIn({ userInfo, setUserInfo }: UserInfo) {
 
   //================================== Handle ADDITEM function ==================================
   const handleAddUserInfo = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.FormEvent,
     userInfo: UserInfo
   ) => {
-    event.preventDefault()
+    // event.preventDefault
     try {
       const body = userInfo
       const response = await fetch('/user_info', {
@@ -38,6 +43,14 @@ export default function IntroLoggedIn({ userInfo, setUserInfo }: UserInfo) {
     } catch (error: any) {
       console.error(error.message)
     }
+  }
+
+  //================================== HandleSubmit function ===============================
+  const handleSubmit = (event: React.FormEvent, userInfo: UserInfo) => {
+    console.log("I'm submitting")
+    return didUserLoad
+      ? handleEditUserInfo(event, userInfo)
+      : handleAddUserInfo(event, userInfo)
   }
 
   //================================== Handle userInfo CHANGE function ==================================
@@ -57,7 +70,7 @@ export default function IntroLoggedIn({ userInfo, setUserInfo }: UserInfo) {
         Congratulations on the new member of your family! Add and edit items at
         your leisure.
       </p>
-      <form>
+      <form onSubmit={(event) => handleSubmit(event, userInfo)}>
         <p>Know the gender of your new little one?</p>
         <div className='w-50 m-auto mb-3'>
           <select

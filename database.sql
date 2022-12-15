@@ -19,4 +19,4 @@ CREATE TABLE user_info(
     user_id INTEGER,
     baby_gender TEXT,
     address TEXT
-)
+);

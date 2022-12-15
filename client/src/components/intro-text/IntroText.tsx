@@ -9,17 +9,19 @@ export default function IntroText() {
   const { user, isAuthenticated } = useAuth0()
   const [userInfo, setUserInfo] = useState({
     user_id: 0,
-    is_initiated: false,
     baby_gender: 'mystery',
     address: '',
   })
+  const [didUserLoad, setDidUserLoad] = useState(false)
 
   const getUserInfo = async () => {
     try {
-      const response = await fetch('/user_info')
+      const response = await fetch(`/user_info/${userInfo.user_id}`)
       const jsonData = await response.json()
       setUserInfo(jsonData)
+      setDidUserLoad(true)
     } catch (error: any) {
+      setDidUserLoad(false)
       console.error(error.message)
     }
   }
@@ -28,7 +30,11 @@ export default function IntroText() {
   }, [])
 
   return checkIfAuth(user, isAuthenticated) ? (
-    <IntroLoggedIn userInfo={userInfo} setUserInfo={setUserInfo} />
+    <IntroLoggedIn
+      userInfo={userInfo}
+      setUserInfo={setUserInfo}
+      didUserLoad={didUserLoad}
+    />
   ) : (
     <IntroLoggedOut userInfo={userInfo} />
   )

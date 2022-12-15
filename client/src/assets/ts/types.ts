@@ -54,12 +54,17 @@ export interface EditItemInterface {
 // }
 
 //interface for user data
-export interface UserInfo {
+export interface IntroProps {
   userInfo: {
     user_id: number
-    is_initiated: boolean
     baby_gender: string
     address: string
   }
   setUserInfo?: any
+  didUserLoad?: boolean
+}
+export interface UserInfo {
+  user_id: number
+  baby_gender: string
+  address: string
 }

@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // ====================== ROUTES ====================== //
-
+// Routes for ITEMS
 // Add items
 app.post('/items', async (req, res) => {
   try {
@@ -73,6 +73,7 @@ app.get('/items', async (req, res) => {
   }
 })
 
+// Get specific item
 app.get('./items/:id', async (req, res) => {
   try {
     const { id } = req.params
@@ -138,6 +139,54 @@ app.delete('/items/:id', async (req, res) => {
     )
 
     res.json('Item was deleted')
+  } catch (error) {
+    console.error(error.message)
+  }
+})
+
+// Routes for USER INFO
+// Add user
+app.post('/user_info', async (req, res) => {
+  try {
+    const { user_id, baby_gender, address } = req.body
+    const newItem = await pool.query(
+      // 'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) RETURNING *',
+      // Check if user is already in system
+      'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) ON CONFLICT (user_id) DO NOTHING RETURNING *'[
+        (user_id, baby_gender, address)
+      ]
+    )
+    res.json(newItem.rows[0])
+  } catch (error) {
+    console.error(error.message)
+  }
+})
+
+// Get specific user info
+app.get('./user_info/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const user = await pool.query(
+      'SELECT * FROM user_info WHERE user_id = $1',
+      [id]
+    )
+    res.json(user.rows[0])
+  } catch (error) {
+    console.error(error.message)
+  }
+})
+
+// update specific user_info
+app.put('/user_info/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { baby_gender, address } = req.body
+    const updateUser = await pool.query(
+      'UPDATE user_info SET baby_gender = $1, address = $2 WHERE user_id = $3',
+      [baby_gender, address, id]
+    )
+
+    res.json('User was updated!')
   } catch (error) {
     console.error(error.message)
   }

@@ -1,6 +1,6 @@
-import { UserInfo } from '../../assets/ts/types'
+import { IntroProps } from '../../assets/ts/types'
 
-export default function IntroLoggedOut({ userInfo }: UserInfo) {
+export default function IntroLoggedOut({ userInfo }: IntroProps) {
   const { baby_gender, address } = userInfo
   const determineGenderColor = (baby_gender: string) =>
     baby_gender === 'girl'
