@@ -59,8 +59,7 @@ export default function IntroLoggedIn({
   const handleUserInfoChange: any = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value = event.target.value
-    const name = event.target.name
+    const { name, value } = event.target
     setUserInfo((prev: UserInfo) => {
       return { ...prev, [name]: value }
     })
@@ -77,8 +76,8 @@ export default function IntroLoggedIn({
         <div className='w-50 m-auto mb-3'>
           <select
             value={baby_gender}
-            name='babyGender'
-            onChange={(event) => handleUserInfoChange(event)}
+            name='baby_gender'
+            onChange={handleUserInfoChange}
             className='form-select'
             aria-label='Gender options'
           >
@@ -100,7 +99,7 @@ export default function IntroLoggedIn({
           className='form-control w-50 m-auto mb-3'
           placeholder='Address'
           value={address}
-          onChange={(event) => handleUserInfoChange(event)}
+          onChange={handleUserInfoChange}
           aria-label='Address'
           aria-describedby='Address to ship'
         />
