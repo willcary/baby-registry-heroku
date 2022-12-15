@@ -125,3 +125,20 @@ $info: #ccf8f3;
     rgba(175, 39, 104, 0.3) 9px 9px, rgba(15, 108, 112, 0.2) 12px 12px,
     rgba(175, 39, 104, 0.1) 15px 15px;
 }
+
+// Logged in styles
+.user-input-width {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .user-input-width {
+    width: 75%;
+  }
+}
+
+@media (min-width: 768px) {
+  .user-input-width {
+    width: 50%;
+  }
+}
