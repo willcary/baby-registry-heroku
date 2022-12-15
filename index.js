@@ -150,11 +150,10 @@ app.post('/user_info', async (req, res) => {
   try {
     const { user_id, baby_gender, address } = req.body
     const newItem = await pool.query(
-      // 'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) RETURNING *',
+      'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) RETURNING *',
       // Check if user is already in system
-      'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) ON CONFLICT (user_id) DO NOTHING RETURNING *'[
-        (user_id, baby_gender, address)
-      ]
+      // 'INSERT INTO items (user_id, baby_gender, address) VALUES($1, $2, $3) ON CONFLICT (user_id) DO NOTHING RETURNING *'
+      [(user_id, baby_gender, address)]
     )
     res.json(newItem.rows[0])
   } catch (error) {
