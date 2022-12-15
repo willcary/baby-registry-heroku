@@ -14,11 +14,12 @@ export default function IntroLoggedIn({
     userInfo: UserInfo
   ) => {
     // event.preventDefault
+    console.log("I'm EDITING a user!")
     try {
       const response = await fetch(`/user_info/${user_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(address),
+        body: JSON.stringify(userInfo),
       })
       window.location.href = '/'
     } catch (error: any) {
@@ -32,6 +33,7 @@ export default function IntroLoggedIn({
     userInfo: UserInfo
   ) => {
     // event.preventDefault
+    console.log("I'm ADDING a user!")
     try {
       const body = userInfo
       const response = await fetch('/user_info', {
@@ -46,7 +48,7 @@ export default function IntroLoggedIn({
   }
 
   //================================== HandleSubmit function ===============================
-  const handleSubmit = (event: React.FormEvent, userInfo: UserInfo) => {
+  const handleSubmit = (event: React.FormEvent) => {
     console.log("I'm submitting")
     return didUserLoad
       ? handleEditUserInfo(event, userInfo)
@@ -70,7 +72,7 @@ export default function IntroLoggedIn({
         Congratulations on the new member of your family! Add and edit items at
         your leisure.
       </p>
-      <form onSubmit={(event) => handleSubmit(event, userInfo)}>
+      <form onSubmit={handleSubmit}>
         <p>Know the gender of your new little one?</p>
         <div className='w-50 m-auto mb-3'>
           <select
