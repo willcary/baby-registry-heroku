@@ -74,7 +74,7 @@ app.get('/items', async (req, res) => {
 })
 
 // Get specific item
-app.get('./items/:id', async (req, res) => {
+app.get('/items/:id', async (req, res) => {
   try {
     const { id } = req.params
     const item = await pool.query('SELECT * FROM items WHERE item_id = $1', [
@@ -162,7 +162,7 @@ app.post('/user_info', async (req, res) => {
 })
 
 // Get specific user info
-app.get('./user_info/:id', async (req, res) => {
+app.get('/user_info/:id', async (req, res) => {
   try {
     const { id } = req.params
     const user = await pool.query(
