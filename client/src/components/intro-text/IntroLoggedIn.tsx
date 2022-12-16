@@ -91,7 +91,7 @@ export default function IntroLoggedIn({
                   <option value='boy'>Boy</option>
                   <option value='girl-girl'>Two Girls</option>
                   <option value='boy-boy'>Two Boys</option>
-                  <option value='boy-girl'>Boy and Girl</option>
+                  <option value='girl-boy'>Girl and Boy</option>
                 </select>
               </div>
 
