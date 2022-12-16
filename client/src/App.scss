@@ -3,6 +3,7 @@
 }
 
 $info: #ccf8f3;
+$text-gray: #495057;
 
 // ------------ General ------------
 .App {
@@ -19,6 +20,11 @@ $info: #ccf8f3;
 
 .hover-grow:hover {
   transform: scale(1.1);
+}
+
+// ------------ Utilities -----------
+.dark-gray {
+  color: $text-gray;
 }
 
 // ------------ Navbar ------------
@@ -131,13 +137,13 @@ $info: #ccf8f3;
   width: 100%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 540px) {
   .user-input-width {
     width: 75%;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 720px) {
   .user-input-width {
     width: 50%;
   }
