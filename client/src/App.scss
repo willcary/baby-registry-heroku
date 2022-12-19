@@ -152,8 +152,7 @@ $text-gray: #495057;
   transition: opacity 500ms;
   z-index: 99;
 }
-.fixed-btn:hover::before,
-.fixed-btn:focus::before {
+.fixed-btn:hover::before {
   opacity: 1;
 }
 
