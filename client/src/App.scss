@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+$primary: #0f6c70;
+$secondary: #b02769;
 $info: #ccf8f3;
 $text-gray: #495057;
 
@@ -124,12 +126,35 @@ $text-gray: #495057;
 }
 
 .fixed-btn {
+  position: relative;
+  z-index: 101;
   margin: 0.5em auto 0.75em;
   width: 86%;
+  max-width: 1300px;
   padding: 0.75rem 1rem;
+  background-color: rgb(15, 108, 112);
+  background: linear-gradient(90deg, $primary 0%, $secondary 100%);
   box-shadow: rgba(175, 39, 104, 0.5) 3px 3px, rgba(15, 108, 112, 0.4) 6px 6px,
     rgba(175, 39, 104, 0.3) 9px 9px, rgba(15, 108, 112, 0.2) 12px 12px,
     rgba(175, 39, 104, 0.1) 15px 15px;
+}
+
+.fixed-btn::before {
+  content: 'Reserve gifts';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.75rem 1rem;
+  background: radial-gradient(circle, $primary 0%, $secondary 100%);
+  opacity: 0;
+  transition: opacity 500ms;
+  z-index: 99;
+}
+.fixed-btn:hover::before,
+.fixed-btn:focus::before {
+  opacity: 1;
 }
 
 // Logged in styles
