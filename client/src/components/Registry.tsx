@@ -177,6 +177,7 @@ export default function Registry() {
     <Container>
       <h1 className='mb-3 mt-4'>Emily and Will's Registry</h1>
       <IntroText />
+
       <form>
         <div className='fixed-btn-container'>
           <Button
@@ -191,7 +192,7 @@ export default function Registry() {
           >
             {checkIfAuth(user, isAuthenticated) ? (
               <>
-                <FaPlus /> Add Item
+                <FaPlus /> <span className='ms-2'>Add Item</span>
               </>
             ) : (
               'Reserve gifts'
