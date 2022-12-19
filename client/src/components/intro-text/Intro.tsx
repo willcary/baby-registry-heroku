@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { checkIfAuth } from '../../assets/js/functions'
-import '../../App.min.css'
 import IntroLoggedOut from './IntroLoggedOut'
 import IntroLoggedIn from './IntroLoggedIn'
 
-export default function IntroText() {
+export default function Intro() {
   const { user, isAuthenticated } = useAuth0()
   const [userInfo, setUserInfo] = useState({
     user_id: 0,
@@ -29,13 +28,18 @@ export default function IntroText() {
     getUserInfo()
   }, [])
 
-  return checkIfAuth(user, isAuthenticated) ? (
-    <IntroLoggedIn
-      userInfo={userInfo}
-      setUserInfo={setUserInfo}
-      didUserLoad={didUserLoad}
-    />
-  ) : (
-    <IntroLoggedOut userInfo={userInfo} />
+  return (
+    <>
+      <h1 className='mb-3 mt-4'>Emily and Will's Registry</h1>
+      {checkIfAuth(user, isAuthenticated) ? (
+        <IntroLoggedIn
+          userInfo={userInfo}
+          setUserInfo={setUserInfo}
+          didUserLoad={didUserLoad}
+        />
+      ) : (
+        <IntroLoggedOut userInfo={userInfo} />
+      )}
+    </>
   )
 }

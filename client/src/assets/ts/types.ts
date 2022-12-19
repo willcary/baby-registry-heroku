@@ -1,4 +1,4 @@
-export interface RegistryItems {
+export interface RegistryItemTypes {
   item_id: string
   user_id: number
   item_name: string
@@ -14,7 +14,7 @@ export interface RegistryItems {
 }
 
 export interface Item {
-  item: RegistryItems
+  item: RegistryItemTypes
   isGiftNeeded: boolean
   handleChange: React.ChangeEventHandler<HTMLInputElement>
   handleDelete: (
@@ -27,7 +27,7 @@ export interface Item {
 export interface EditItemInterface {
   show?: boolean
   onHide?: any
-  item: RegistryItems
+  item: RegistryItemTypes
   isGiftNeeded: boolean
   handleDelete: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

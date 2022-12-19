@@ -2,7 +2,6 @@ import { IntroProps } from '../../assets/ts/types'
 
 export default function IntroLoggedOut({ userInfo }: IntroProps) {
   const { baby_gender, address } = userInfo
-  console.log(baby_gender)
   const determineGenderColor = (baby_gender: string) => {
     if (baby_gender === 'girl' || baby_gender === 'girl-girl') {
       return 'text-secondary'

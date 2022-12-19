@@ -1,12 +1,12 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table'
-import { RegistryItems } from '../../assets/ts/types.js'
+import { RegistryItemTypes } from '../../assets/ts/types.js'
 
 interface ModalProps {
   show: boolean
   onHide: any
-  items: RegistryItems[]
+  items: RegistryItemTypes[]
 }
 
 export default function ConfirmationModal({ show, onHide, items }: ModalProps) {
@@ -33,7 +33,7 @@ export default function ConfirmationModal({ show, onHide, items }: ModalProps) {
               </tr>
             </thead>
             <tbody>
-              {items.map((item: RegistryItems) => (
+              {items.map((item: RegistryItemTypes) => (
                 <tr key={item.item_id}>
                   <td>{item.give}</td>
                   <td>{item.item_name}</td>

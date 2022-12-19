@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card'
 import EditItem from './EditItem'
 import GiveInput from './GiveInput'
 import NameInput from './NameInput'
-import '../../App.min.css'
 
 import { Item } from '../../assets/ts/types.js'
 import { checkIfAuth } from '../../assets/js/functions'
