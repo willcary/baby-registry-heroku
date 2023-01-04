@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import RegistryItem from '../registry-items/RegistryItem'
 import Button from 'react-bootstrap/Button'
-import ConfirmationModal from '../modals/ConfirmationModal'
+import ReserveModal from '../modals/ReserveModal'
 import AddItemModal from '../modals/AddItemModal'
 
 import { RegistryItemTypes } from '../../assets/ts/types.js'
@@ -14,7 +14,7 @@ export default function RegistryItems() {
   const { user, isAuthenticated } = useAuth0()
   const [registryItems, setRegistryItems] = useState<RegistryItemTypes[]>([])
 
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const [showReserveModal, setShowReserveModal] = useState(false)
   const [showAddItemModal, setShowAddItemModal] = useState(false)
 
   // Retrieving data from server on initial load
@@ -65,7 +65,7 @@ export default function RegistryItems() {
         }
         return item
       })
-      setShowConfirmationModal(false)
+      setShowReserveModal(false)
       return newRegistryItems
     })
     changedItems.forEach(async (item: any) => {
@@ -181,7 +181,7 @@ export default function RegistryItems() {
           onClick={() =>
             checkIfAuth(user, isAuthenticated)
               ? setShowAddItemModal(true)
-              : setShowConfirmationModal(true)
+              : setShowReserveModal(true)
           }
           variant='primary'
           size='lg'
@@ -201,9 +201,9 @@ export default function RegistryItems() {
         onHide={() => setShowAddItemModal(false)}
         handleAddItem={handleAddItem}
       />
-      <ConfirmationModal
-        show={showConfirmationModal}
-        onHide={() => setShowConfirmationModal(false)}
+      <ReserveModal
+        show={showReserveModal}
+        onHide={() => setShowReserveModal(false)}
         items={[...registryItems.filter((item: any) => Number(item.give) > 0)]}
         handleSubmit={handleSubmit}
       />

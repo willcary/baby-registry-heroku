@@ -10,7 +10,7 @@ interface ModalProps {
   handleSubmit: any
 }
 
-export default function ConfirmationModal({
+export default function ReserveModal({
   show,
   onHide,
   items,
