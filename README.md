@@ -31,11 +31,17 @@ _Confirmation, delete, add and edit modals._
 - [Node.js](https://nodejs.org/en/)
 - [PostgreSQL](https://www.postgresql.org/download/)
 
-2. In `Intro.tsx`, give your registry a different title within the `h1` element. Feel free to change the text in `IntroLoggedOut.tsx` as well (located in the same intro-text folder).
-3. Create an [Auth0](https://auth0.com/signup?place=header&type=button&text=sign%20up) account and set up an application with localhost and your live URL in the allowed callback URLS.
-4. Create a Postgres registry database and accompanying tables (copy and paste from `database.sql` file)
-5. Create a `.env` file as shown in the `.env_sample` file with filled in values.
-6. Follow along with [this tutorial](https://www.youtube.com/watch?v=ZJxUOOND5_A) by _The Stoic Programmers_ to host on heroku (\*\*\*note that heroku did away with their free tier hosting for 2023, so it will require a monthly payment)
+2. run `npm install`
+3. In `Intro.tsx`, give your registry a different title within the `h1` element. Feel free to change the text in `IntroLoggedOut.tsx` as well (located in the same intro-text folder).
+4. Create an [Auth0](https://auth0.com/signup?place=header&type=button&text=sign%20up) account and set up an application with localhost and your live URL in the allowed callback URLS.
+5. Create a Postgres registry database and accompanying tables (copy and paste from `database.sql` file)
+6. Create a `.env` file as shown in the `.env_sample` file with filled in values.
+7. Navigate to client folder and enter `npm start` to start locally.
+
+### Hosting on Heroku
+
+- Follow along with [this tutorial](https://www.youtube.com/watch?v=ZJxUOOND5_A) by _The Stoic Programmers_ to host on heroku.
+  - \*\*\*note that heroku did away with their free tier hosting for 2023, so it will require a monthly payment.
 
 ## Technologies used
 
